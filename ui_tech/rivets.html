@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <script type='text/javascript' src="http://www.rivetsjs.com/dist/rivets.js"></script>
+  <script type='text/javascript' src="http://underscorejs.org/underscore.js"></script>
+  <script type='text/javascript' src="http://code.jquery.com/jquery-2.1.0.js"></script>
+
+  <script>
+      rivets.binders['input-value'] = {
+        publishes: true,
+        bind: function(el) {
+            return $(el).on('input', this.publish);
+        },
+        unbind: function(el) {
+            return $(el).off('input', this.publish);
+        },
+        routine: function(el, value) {
+            var el = $(el);
+            if (value != el.val()) {
+                el.val(value != null ? value : '');
+            }
+        }
+    }; 
+    
+  $(function() {
+      var binding = {content: ""};
+      rivets.bind($('#myView'), binding);
+  });
+  </script>
+</head>
+
+<body id="myView">
+Write something:<br>
+<input rv-input-value="content" />
+
+<br>
+<br>
+You get a copy here:
+<br>
+<div rv-text="content"> </div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title>Simple angular example</title>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+</head>
+
+<body>
+Write something:<br>
+<input type="number" ng-model="content" />
+ 
+<br>
+<br>
+You get a copy here:
+<br>
+<div ng-show="content">{{ content }}</div>
+
+</body>
+</html>
